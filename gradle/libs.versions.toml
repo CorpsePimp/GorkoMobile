@@ -2,6 +2,7 @@
 # Android & Kotlin
 agp = "8.10.0"
 animation = "1.8.2"
+converterGson = "2.3.0"
 core = "1.6.1"
 coreTesting = "2.2.0"
 hiltWork = "1.2.0"
@@ -103,6 +104,7 @@ androidx-material-icons-extended = { module = "androidx.compose.material:materia
 androidx-compose-ui-text = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "googleFonts" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 compose = { module = "com.kizitonwose.calendar:compose", version.ref = "composecalendar" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockitoInline" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
