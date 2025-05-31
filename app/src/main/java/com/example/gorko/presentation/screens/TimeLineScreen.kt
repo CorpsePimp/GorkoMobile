@@ -1,7 +1,5 @@
 package com.example.gorko.presentation.screens
 
-import android.app.DatePickerDialog
-import android.widget.DatePicker
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -27,23 +25,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.gorko.presentation.components.WeddingDatePickerDialog
 import com.example.gorko.presentation.viewmodel.WeddingViewModel
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 
+
 @Composable
 fun TimeLineScreen(
-    weddingViewModel: WeddingViewModel = hiltViewModel(),
+    weddingViewModel: WeddingViewModel,
     onBack: () -> Unit
 ) {
-    val context = LocalContext.current
     val weddingDate by weddingViewModel.weddingDate.collectAsState()
     var selectedDate by remember { mutableStateOf(weddingDate) }
+    var showDatePicker by remember { mutableStateOf(false) }
 
     val today = LocalDate.now()
     val daysLeft = ChronoUnit.DAYS.between(today, selectedDate).coerceAtLeast(0)
@@ -93,18 +91,7 @@ fun TimeLineScreen(
 
         // Кнопка выбора даты
         Button(
-            onClick = {
-                val date = selectedDate
-                DatePickerDialog(
-                    context,
-                    { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
-                        selectedDate = LocalDate.of(year, month + 1, dayOfMonth)
-                    },
-                    date.year,
-                    date.monthValue - 1,
-                    date.dayOfMonth
-                ).show()
-            },
+            onClick = { showDatePicker = true },
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFFF9ECED),
                 contentColor = Color(0xFFC58C94)
@@ -113,6 +100,14 @@ fun TimeLineScreen(
             modifier = Modifier.fillMaxWidth(0.9f)
         ) {
             Text("Выбрать дату свадьбы")
+        }
+
+        if (showDatePicker) {
+            WeddingDatePickerDialog(
+                initialDate = selectedDate,
+                onDateSelected = { selectedDate = it },
+                onDismiss = { showDatePicker = false }
+            )
         }
 
         Spacer(Modifier.height(20.dp))

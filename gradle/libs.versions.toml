@@ -1,6 +1,7 @@
 [versions]
 # Android & Kotlin
 agp = "8.10.0"
+androidxMaterial3 = "1.2.0"
 animation = "1.8.2"
 converterGson = "2.3.0"
 core = "1.6.1"
@@ -88,6 +89,7 @@ androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecyc
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntime" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntime" }
+androidx-material3-v120 = { module = "androidx.compose.material3:material3", version.ref = "androidxMaterial3" }
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtx" }
 
 # Compose UI

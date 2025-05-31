@@ -1,33 +1,13 @@
 package com.example.gorko.data.local.entity
 
 import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
 import androidx.room.PrimaryKey
-import java.math.BigDecimal
-import java.time.LocalDateTime
 
-@Entity(
-    tableName = "expenses",
-    foreignKeys = [
-        ForeignKey(
-            entity = WeddingEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["weddingId"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ],
-    indices = [Index(value = ["weddingId"])]
-)
+@Entity(tableName = "expenses")
 data class ExpenseEntity(
-    @PrimaryKey
-    val id: String,
-    val weddingId: String,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val title: String,
-    val description: String? = null,
-    val category: ExpenseCategory,
     val amount: Double,
-    val isPaid: Boolean = false,
-    val createdAt: Long,
-    val updatedAt: Long
+    val category: String,
+    val date: String // Лучше хранить как String (ISO), а не LocalDate
 )

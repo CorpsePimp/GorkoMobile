@@ -96,6 +96,7 @@ dependencies {
     implementation(libs.androidx.foundation)
     implementation(libs.swipe)
     implementation(libs.androidx.material.icons.extended)
+    implementation (libs.androidx.material3.v120)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 

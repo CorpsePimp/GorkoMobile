@@ -37,7 +37,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.gorko.presentation.viewmodel.WeddingViewModel
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
@@ -50,9 +49,9 @@ fun MainScreen(
     onInspirationClick: () -> Unit = {},
     onInspirationMoreClick: () -> Unit = {},
     onTimelineClick: () -> Unit = {},
-    names: String = "Светлана и Савелий",
+    names: String = "Светлана и Савва",
     daysLeft: Int = 82,
-    weddingViewModel: WeddingViewModel = hiltViewModel(),
+    weddingViewModel: WeddingViewModel,
     todayTasks: List<Pair<String, Boolean>> = listOf(
         "Позвонить флористу" to true,
         "Заказать торт" to false,
