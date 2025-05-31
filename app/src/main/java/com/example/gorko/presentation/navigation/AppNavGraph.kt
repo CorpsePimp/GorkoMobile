@@ -8,6 +8,10 @@ import androidx.navigation.compose.composable
 import com.example.gorko.presentation.screens.LoginScreen
 import com.example.gorko.presentation.screens.MainScreen
 import com.example.gorko.presentation.screens.RegistrationScreen
+import com.example.gorko.presentation.screens.TimeLineScreen
+import androidx.hilt.navigation.compose.hiltViewModel
+
+import com.example.gorko.presentation.viewmodel.WeddingViewModel
 
 @Composable
 fun AppNavGraph(navController: NavHostController, modifier: Modifier = Modifier) {
@@ -26,17 +30,24 @@ fun AppNavGraph(navController: NavHostController, modifier: Modifier = Modifier)
             )
         }
         composable("main") {
+            val weddingViewModel: WeddingViewModel = hiltViewModel()
             MainScreen(
                 onTasksClick = { /* navController.navigate("tasks") */ },
                 onTasksMoreClick = { /* navController.navigate("tasks") */ },
                 onFinanceClick = { /* navController.navigate("finance") */ },
                 onInspirationClick = { /* navController.navigate("inspiration") */ },
                 onInspirationMoreClick = { /* navController.navigate("inspiration") */ },
-                onAddClick = { /* navController.navigate("add_task") */ },
-                onTimelineClick = { /* navController.navigate("timeline") */ }
+                onTimelineClick = { navController.navigate("timeline") }
             )
             // composable("main") { MainScreen(navController) }
             // Добавляй остальные экраны по мере необходимости
+        }
+        composable("timeline") {
+            val weddingViewModel: WeddingViewModel = hiltViewModel()
+            TimeLineScreen(
+                weddingViewModel = weddingViewModel,
+                onBack = { navController.popBackStack() }
+            )
         }
     }
 }
