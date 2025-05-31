@@ -10,6 +10,6 @@ data class AuthTokenEntity(
     val userId: String,
     val accessToken: String,
     val refreshToken: String,
-    val expiresAt: LocalDateTime,
-    val createdAt: LocalDateTime = LocalDateTime.now()
+    val expiresAt: Long,
+    val createdAt: Long
 )

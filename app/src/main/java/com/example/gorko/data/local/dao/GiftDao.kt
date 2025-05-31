@@ -55,7 +55,7 @@ interface GiftDao {
     fun getPurchasedGiftsCount(weddingId: String): Flow<Int>
 
     @Query("SELECT SUM(price) FROM gifts WHERE weddingId = :weddingId")
-    fun getTotalGiftsValue(weddingId: String): Flow<BigDecimal?>
+    fun getTotalGiftsValue(weddingId: String): Flow<Double?>
 
     @Query("DELETE FROM gifts WHERE weddingId = :weddingId")
     suspend fun deleteWeddingGifts(weddingId: String)

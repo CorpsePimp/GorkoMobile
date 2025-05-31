@@ -33,10 +33,10 @@ interface ExpenseDao {
     fun getExpensesByCategory(weddingId: String, category: ExpenseCategory): Flow<List<ExpenseEntity>>
 
     @Query("SELECT SUM(amount) FROM expenses WHERE weddingId = :weddingId")
-    fun getTotalExpenses(weddingId: String): Flow<BigDecimal?>
+    fun getTotalExpenses(weddingId: String): Flow<Double?>
 
     @Query("SELECT SUM(amount) FROM expenses WHERE weddingId = :weddingId AND category = :category")
-    fun getTotalByCategory(weddingId: String, category: ExpenseCategory): Flow<BigDecimal?>
+    fun getTotalByCategory(weddingId: String, category: ExpenseCategory): Flow<Double?>
 
     @Query("""
         SELECT category, SUM(amount) as total 
@@ -63,5 +63,5 @@ interface ExpenseDao {
 
 data class CategoryTotal(
     val category: ExpenseCategory,
-    val total: BigDecimal
+    val total: Double
 )

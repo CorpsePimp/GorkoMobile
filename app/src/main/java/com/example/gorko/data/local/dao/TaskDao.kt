@@ -33,13 +33,13 @@ interface TaskDao {
     fun getIncompleteTasks(weddingId: String): Flow<List<TaskEntity>>
 
     @Query("SELECT * FROM tasks WHERE weddingId = :weddingId AND date(dueDateTime) = date(:date) ORDER BY dueDateTime ASC")
-    fun getTasksForDate(weddingId: String, date: LocalDate): Flow<List<TaskEntity>>
+    fun getTasksForDate(weddingId: String, date: Long): Flow<List<TaskEntity>>
 
     @Query("SELECT * FROM tasks WHERE weddingId = :weddingId AND date(dueDateTime) = date('now', 'localtime') ORDER BY dueDateTime ASC")
     fun getTodayTasks(weddingId: String): Flow<List<TaskEntity>>
 
     @Query("SELECT * FROM tasks WHERE weddingId = :weddingId AND isCompleted = 0 AND dueDateTime < :dateTime ORDER BY dueDateTime ASC")
-    fun getOverdueTasks(weddingId: String, dateTime: LocalDateTime): Flow<List<TaskEntity>>
+    fun getOverdueTasks(weddingId: String, dateTime: Long): Flow<List<TaskEntity>>
 
     @Query("UPDATE tasks SET isCompleted = :isCompleted WHERE id = :taskId")
     suspend fun toggleTaskCompletion(taskId: String, isCompleted: Boolean)

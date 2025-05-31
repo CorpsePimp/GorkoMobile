@@ -14,5 +14,5 @@ data class InspirationEntity(
     val category: String? = null, // Декор, Платья, Торты, Букеты и т.д.
     val sourceUrl: String? = null, // Источник идеи
     val isFavorite: Boolean = false,
-    val createdAt: LocalDateTime = LocalDateTime.now()
+    val createdAt: Long
 )

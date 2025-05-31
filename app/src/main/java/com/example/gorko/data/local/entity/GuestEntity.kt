@@ -26,12 +26,12 @@ data class GuestEntity(
     val fullName: String,
     val phone: String? = null,
     val email: String? = null,
-    val birthDate: LocalDate? = null,
+    val birthDate: Long,
     val status: GuestStatus = GuestStatus.INVITED,
     val tableNumber: Int? = null, // Номер стола для рассадки
     val notes: String? = null, // Дополнительные заметки
-    val invitationSentAt: LocalDateTime? = null,
-    val responseReceivedAt: LocalDateTime? = null,
-    val createdAt: LocalDateTime = LocalDateTime.now(),
-    val updatedAt: LocalDateTime = LocalDateTime.now()
+    val invitationSentAt: Long,
+    val responseReceivedAt: Long,
+    val createdAt: Long,
+    val updatedAt: Long
 )

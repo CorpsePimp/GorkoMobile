@@ -10,5 +10,5 @@ data class WeddingEntity(
     val id: String,
     val groomName: String,
     val brideName: String,
-    val weddingDate: LocalDate
+    val weddingDate: Long
 )

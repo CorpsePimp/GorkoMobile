@@ -24,8 +24,8 @@ data class TaskEntity(
     val weddingId: String,
     val title: String,
     val description: String? = null,
-    val dueDateTime: LocalDateTime,
+    val dueDateTime: Long,
     val isCompleted: Boolean = false,
-    val createdAt: LocalDateTime = LocalDateTime.now(),
-    val updatedAt: LocalDateTime = LocalDateTime.now()
+    val createdAt: Long,
+    val updatedAt: Long
 )

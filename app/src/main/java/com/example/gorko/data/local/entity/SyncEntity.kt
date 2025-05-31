@@ -12,9 +12,9 @@ data class SyncEntity(
     val entityId: String,
     val operation: SyncOperation,
     val data: String, // JSON данные для синхронизации
-    val createdAt: LocalDateTime = LocalDateTime.now(),
+    val createdAt: Long,
     val attempts: Int = 0,
-    val lastAttemptAt: LocalDateTime? = null
+    val lastAttemptAt: Long
 )
 
 enum class SyncOperation {

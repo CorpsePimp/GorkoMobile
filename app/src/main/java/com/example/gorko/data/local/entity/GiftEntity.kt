@@ -25,11 +25,11 @@ data class GiftEntity(
     val weddingId: String,
     val name: String,
     val description: String? = null,
-    val price: BigDecimal? = null,
+    val price: Double,
     val url: String? = null, // Ссылка на товар
     val imageUrl: String? = null,
     val isPurchased: Boolean = false,
     val purchasedBy: String? = null, // Имя гостя, который купил подарок
-    val createdAt: LocalDateTime = LocalDateTime.now(),
-    val updatedAt: LocalDateTime = LocalDateTime.now()
+    val createdAt: Long,
+    val updatedAt: Long
 )

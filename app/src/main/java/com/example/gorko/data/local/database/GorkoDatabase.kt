@@ -3,9 +3,7 @@ package com.example.gorko.data.local.database
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import android.content.Context
-import com.example.gorko.data.local.converters.Converters
 import com.example.gorko.data.local.dao.*
 import com.example.gorko.data.local.entity.*
 import net.sqlcipher.database.SQLiteDatabase
@@ -25,12 +23,11 @@ import net.sqlcipher.database.SupportFactory
         SyncEntity::class,
         AuthTokenEntity::class
     ],
-    version = 1,
-    exportSchema = true
+    version = 2,
+    exportSchema = false
 )
-@TypeConverters(Converters::class)
 abstract class GorkoDatabase : RoomDatabase() {
-    
+
     abstract fun userDao(): UserDao
     abstract fun weddingDao(): WeddingDao
     abstract fun taskDao(): TaskDao
@@ -45,10 +42,10 @@ abstract class GorkoDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE: GorkoDatabase? = null
-        
+
         private const val DATABASE_NAME = "gorko_database.db"
-        private const val DATABASE_PASSPHRASE = "GorkoSecureDB2025!" // В продакшене использовать более сложный ключ
-        
+        private const val DATABASE_PASSPHRASE = "GorkoSecureDB2025!"
+
         fun getInstance(context: Context): GorkoDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = buildDatabase(context)
@@ -56,23 +53,21 @@ abstract class GorkoDatabase : RoomDatabase() {
                 instance
             }
         }
-        
+
         private fun buildDatabase(context: Context): GorkoDatabase {
-            // Создаем фабрику для SQLCipher
             val passphrase = SQLiteDatabase.getBytes(DATABASE_PASSPHRASE.toCharArray())
             val factory = SupportFactory(passphrase)
-            
+
             return Room.databaseBuilder(
                 context.applicationContext,
                 GorkoDatabase::class.java,
                 DATABASE_NAME
             )
-                .openHelperFactory(factory) // Используем SQLCipher для шифрования
-                .fallbackToDestructiveMigration() // В продакшене лучше использовать миграции
+                .openHelperFactory(factory)
+                .fallbackToDestructiveMigration()
                 .build()
         }
-        
-        // Метод для тестирования без шифрования
+
         fun getTestInstance(context: Context): GorkoDatabase {
             return Room.inMemoryDatabaseBuilder(
                 context.applicationContext,

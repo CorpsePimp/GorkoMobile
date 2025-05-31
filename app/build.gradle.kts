@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace = "com.example.gorko" // Измените на ваш пакет
-    compileSdk = 34 // Или выше, в зависимости от требований Material3 и других библиотек
+    compileSdk = 36 // Или выше, в зависимости от требований Material3 и других библиотек
 
     defaultConfig {
         applicationId = "com.example.gorko" // Измените на ваш applicationId
         minSdk = 28 // Указано в ТЗ: Android 9 (API 28)
-        targetSdk = 34 // Или выше
+        targetSdk = 36 // Или выше
         versionCode = 1
         versionName = "0.1" // Соответствует версии из ТЗ
 
@@ -75,6 +75,7 @@ dependencies {
     // WorkManager
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.hilt.work)
+    implementation(libs.androidx.adapters)
     ksp(libs.androidx.hilt.compiler)
 
     // Core Android
@@ -94,8 +95,10 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.foundation)
     implementation(libs.swipe)
+    implementation(libs.androidx.material.icons.extended)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
 
     // Navigation
     implementation(libs.androidx.navigation.compose)

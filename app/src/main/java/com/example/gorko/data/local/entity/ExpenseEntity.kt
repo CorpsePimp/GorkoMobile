@@ -26,8 +26,8 @@ data class ExpenseEntity(
     val title: String,
     val description: String? = null,
     val category: ExpenseCategory,
-    val amount: BigDecimal,
+    val amount: Double,
     val isPaid: Boolean = false,
-    val createdAt: LocalDateTime = LocalDateTime.now(),
-    val updatedAt: LocalDateTime = LocalDateTime.now()
+    val createdAt: Long,
+    val updatedAt: Long
 )
