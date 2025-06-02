@@ -3,7 +3,7 @@ package com.example.gorko.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gorko.data.local.entity.ExpenseEntity
-import com.example.gorko.data.repo.ExpenseRepository
+import com.example.gorko.data.repository.ExpenseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

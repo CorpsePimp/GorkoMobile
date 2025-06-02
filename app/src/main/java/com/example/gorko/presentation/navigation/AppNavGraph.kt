@@ -8,10 +8,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.gorko.presentation.screens.FinanceScreen
+import com.example.gorko.presentation.screens.InspirationScreen
 import com.example.gorko.presentation.screens.LoginScreen
 import com.example.gorko.presentation.screens.MainScreen
 import com.example.gorko.presentation.screens.RegistrationScreen
+import com.example.gorko.presentation.screens.SettingsScreen
+import com.example.gorko.presentation.screens.TaskScreen
 import com.example.gorko.presentation.screens.TimeLineScreen
+import com.example.gorko.presentation.screens.VendorsScreen
 import com.example.gorko.presentation.viewmodel.FinanceViewModel
 import com.example.gorko.presentation.viewmodel.WeddingViewModel
 import java.text.NumberFormat
@@ -43,12 +47,14 @@ fun AppNavGraph(navController: NavHostController, modifier: Modifier = Modifier)
         composable("main") {
             MainScreen(
                 weddingViewModel = weddingViewModel,
-                onTasksClick = { /* navController.navigate("tasks") */ },
-                onTasksMoreClick = { /* navController.navigate("tasks") */ },
+                onTasksClick = { navController.navigate("tasks") },
+                onTasksMoreClick = { navController.navigate("tasks") },
                 onFinanceClick = { navController.navigate("finance") },
-                onInspirationClick = { /* navController.navigate("inspiration") */ },
+                onInspirationClick = {  navController.navigate("inspiration")  },
                 onInspirationMoreClick = { /* navController.navigate("inspiration") */ },
                 onTimelineClick = { navController.navigate("timeline") },
+                onSettingsClick = { navController.navigate("settings") },
+                onVendorsClick = { navController.navigate("vendors") },
                 totalSpent = totalSpentString // теперь сумма всегда актуальна!
             )
         }
@@ -62,6 +68,30 @@ fun AppNavGraph(navController: NavHostController, modifier: Modifier = Modifier)
             FinanceScreen(
                 financeViewModel = financeViewModel,
                 onBack = { navController.popBackStack() }
+            )
+        }
+        composable("inspiration") {
+            InspirationScreen(onBack = { navController.popBackStack() })
+        }
+        composable("tasks") {
+            TaskScreen(onBack = { navController.popBackStack() })
+        }
+        composable("settings") {
+            SettingsScreen(
+                onLogout = {
+                    navController.navigate("login") {
+                        popUpTo("main") { inclusive = true }
+                        launchSingleTop = true
+                    }
+                },
+                onMainClick = { navController.navigate("main") { launchSingleTop = true } }
+            )
+        }
+        composable("vendors") {
+            VendorsScreen(
+                onHomeClick = { navController.navigate("main") },
+                onSettingsClick = { navController.navigate("settings") },
+                onVendorsClick = { /* ничего, т.к. уже тут */ }
             )
         }
     }

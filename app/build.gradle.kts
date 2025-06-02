@@ -97,6 +97,7 @@ dependencies {
     implementation(libs.swipe)
     implementation(libs.androidx.material.icons.extended)
     implementation (libs.androidx.material3.v120)
+    implementation (libs.androidx.navigation.compose.v277)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
@@ -126,12 +127,14 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
-    // Networking - Retrofit & OkHttp (согласно ТЗ)
+    // Networking - Retrofit & OkHttp
     implementation(libs.retrofit.core)
     implementation(platform(libs.okhttp.bom))
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.converter.gson)
+    implementation(libs.coil.compose.v240)
+
 
     // Data Storage
     implementation(libs.datastore.preferences)

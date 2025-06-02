@@ -1,31 +1,12 @@
 package com.example.gorko.data.local.entity
 
 import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
 import androidx.room.PrimaryKey
-import java.time.LocalDateTime
 
-@Entity(
-    tableName = "tasks",
-    foreignKeys = [
-        ForeignKey(
-            entity = WeddingEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["weddingId"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ],
-    indices = [Index(value = ["weddingId"])]
-)
+@Entity(tableName = "tasks")
 data class TaskEntity(
-    @PrimaryKey
-    val id: String,
-    val weddingId: String,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val title: String,
-    val description: String? = null,
-    val dueDateTime: Long,
-    val isCompleted: Boolean = false,
-    val createdAt: Long,
-    val updatedAt: Long
+    val date: String, // формат YYYY-MM-DD
+    val isDone: Boolean = false
 )

@@ -2,7 +2,9 @@
 # Android & Kotlin
 agp = "8.10.0"
 androidxMaterial3 = "1.2.0"
+androidxNavigationCompose = "2.7.7"
 animation = "1.8.2"
+coilComposeVersion = "2.4.0"
 converterGson = "2.3.0"
 core = "1.6.1"
 coreTesting = "2.2.0"
@@ -90,6 +92,7 @@ androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-ru
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntime" }
 androidx-material3-v120 = { module = "androidx.compose.material3:material3", version.ref = "androidxMaterial3" }
+androidx-navigation-compose-v277 = { module = "androidx.navigation:navigation-compose", version.ref = "androidxNavigationCompose" }
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtx" }
 
 # Compose UI
@@ -107,6 +110,7 @@ androidx-foundation = { module = "androidx.compose.foundation:foundation", versi
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIcons" }
 androidx-compose-ui-text = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "googleFonts" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
+coil-compose-v240 = { module = "io.coil-kt:coil-compose", version.ref = "coilComposeVersion" }
 compose = { module = "com.kizitonwose.calendar:compose", version.ref = "composecalendar" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }

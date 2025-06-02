@@ -37,6 +37,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.gorko.presentation.components.BottomNavBar
 import com.example.gorko.presentation.viewmodel.WeddingViewModel
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
@@ -49,6 +50,11 @@ fun MainScreen(
     onInspirationClick: () -> Unit = {},
     onInspirationMoreClick: () -> Unit = {},
     onTimelineClick: () -> Unit = {},
+    onSettingsClick: () -> Unit = {},
+    onPeopleClick: () -> Unit = {},
+    onGiftsClick: () -> Unit = {},
+    onHomeClick: () -> Unit = {},
+    onVendorsClick: () -> Unit = {},
     names: String = "Светлана и Савва",
     daysLeft: Int = 82,
     weddingViewModel: WeddingViewModel,
@@ -87,12 +93,16 @@ fun MainScreen(
             Spacer(Modifier.height(12.dp))
             InspirationPanel(onInspirationClick, onInspirationMoreClick)
         }
-        BottomBar(
-            modifier = Modifier.align(Alignment.BottomCenter)
+        BottomNavBar(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            onPeopleClick = onPeopleClick,
+            onGiftsClick = onGiftsClick,
+            onHomeClick = onHomeClick,
+            onVendorsClick = onVendorsClick,
+            onSettingsClick = onSettingsClick
         )
     }
 }
-
 @Composable
 fun NamesPanel(
     names: String
@@ -281,14 +291,6 @@ fun InspirationPanel(
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp
                 )
-                Spacer(Modifier.weight(1f))
-                Text(
-                    text = "Ещё",
-                    color = Color(0xFFC58C94),
-                    fontSize = 15.sp,
-                    modifier = Modifier
-                        .clickable { onMoreClick() }
-                )
             }
             Spacer(Modifier.height(12.dp))
             // Увеличенные карточки-вдохновения
@@ -311,7 +313,10 @@ fun InspirationPanel(
 }
 
 @Composable
-fun BottomBar(modifier: Modifier = Modifier) {
+fun BottomBar(
+    modifier: Modifier = Modifier,
+    onSettingsClick: () -> Unit = {}
+) {
     val items = listOf(
         Pair(Icons.Filled.People, "Гости"),
         Pair(Icons.Filled.CardGiftcard, "Подарки"),
@@ -332,8 +337,11 @@ fun BottomBar(modifier: Modifier = Modifier) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            for ((icon, contentDesc) in items) {
-                IconButton(onClick = { /* TODO: handle nav */ }) {
+            items.forEach { (icon, contentDesc) ->
+                IconButton(onClick = {
+                    if (contentDesc == "Настройки") onSettingsClick()
+                    // Добавь обработчики для других кнопок, если нужно
+                }) {
                     Icon(
                         imageVector = icon,
                         contentDescription = contentDesc,

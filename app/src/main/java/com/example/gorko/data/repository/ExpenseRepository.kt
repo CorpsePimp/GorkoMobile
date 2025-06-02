@@ -1,4 +1,4 @@
-package com.example.gorko.data.repo
+package com.example.gorko.data.repository
 
 import com.example.gorko.data.local.dao.ExpenseDao
 import com.example.gorko.data.local.entity.ExpenseEntity
